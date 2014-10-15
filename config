@@ -76,7 +76,7 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 
-# move focused container to workspace
+# move focused contain1er to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -108,6 +108,13 @@ bar {
 client.focused $baseA3 $red $baseA3 $red
 client.unfocused $baseA3 $orange $baseA3 $orange
 client.focused_inactive $baseA3 $orange $baseA3 $orange
+
+workspace 1 output DFP7
+workspace 2 output DFP6
+workspace 3 output DFP1
+workspace 7 output DFP7
+workspace 8 output DFP6
+workspace 9 output DFP1
 
 #new_window 1pixel
 for_window [title=" - Google Chrome$"] border none
