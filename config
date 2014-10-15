@@ -111,7 +111,6 @@ client.focused_inactive $baseA3 $orange $baseA3 $orange
 
 #new_window 1pixel
 for_window [title=" - Google Chrome$"] border none
-#for_window [title="^dwb"] border pixel 2
 for_window [title="Spotify Premium - Linux Preview"] border none
 bindsym $MOD+SHIFT+s exec spotify
 bindsym $MOD+SHIFT+g exec --no-startup-id google-chrome
