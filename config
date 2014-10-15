@@ -1,0 +1,134 @@
+set $mod Mod1
+
+#colors
+set $yellow   #b58900
+set $orange   #cb4b16
+set $red  #dc322f
+set $magenta  #d33682
+set $violet   #6c71c4
+set $blue #268bd2
+set $cyan #2aa198
+set $green    #859900
+set $baseA3 #002b36
+set $baseA2 #073642
+set $baseA1 #586e75
+set $baseA0 #657b83
+set $baseB0 #839496
+set $baseB1 #93a1a1
+set $baseB2 #eee8d5
+set $baseB3 #fdf6e3
+set $custom #001b26
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec j4-dmenu-desktop
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+g split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' '~/.i3/i3exit.sh'"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+	status_command i3status -c ~/.i3/.i3status.conf | /home/pvilim/.i3/wrapper.py
+        colors {
+            # solarized
+            background $baseA2
+            statusline $baseB2
+            focused_workspace $red $red $baseA3
+            active_workspace $red $red $baseA3
+            inactive_workspace $orange $orange $baseA3
+        }
+}
+
+client.focused $baseA3 $red $baseA3 $red
+client.unfocused $baseA3 $orange $baseA3 $orange
+client.focused_inactive $baseA3 $orange $baseA3 $orange
+
+#new_window 1pixel
+for_window [title=" - Google Chrome$"] border none
+#for_window [title="^dwb"] border pixel 2
+for_window [title="Spotify Premium - Linux Preview"] border none
+bindsym $MOD+SHIFT+s exec spotify
+bindsym $MOD+SHIFT+g exec --no-startup-id google-chrome
+bindsym $MOD+SHIFT+p exec --no-startup-id zathura
+bindsym $MOD+SHIFT+d exec --no-startup-id dwb
+bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
+bindsym $MOD+SHIFT+z exec ~/.i3/suspend.sh
+
+bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
+bindsym $MOD+Down exec --no-startup-id amixer set Master 5%-
+bindsym $MOD+Left exec --no-startup-id amixer set Master toggle
+bindsym $MOD+Right exec --no-startup-id amixer set Master toggle
+bindsym $mod+SHIFT+Left exec --no-startup-id ~/.i3/spotifyctl.py --previous
+bindsym $mod+SHIFT+Up exec --no-startup-id ~/.i3/spotifyctl.py --playpause
+bindsym $mod+SHIFT+Down exec --no-startup-id ~/.i3/spotifyctl.py --playpause
+bindsym $mod+SHIFT+Right exec --no-startup-id ~/.i3/spotifyctl.py --next
+
+bindsym $MOD+p exec scrot -s /tmp/screen.png
+
+exec ~/.i3/i3start.sh
