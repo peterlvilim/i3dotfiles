@@ -101,13 +101,13 @@ bar {
             statusline $baseB2
             focused_workspace $red $red $baseA3
             active_workspace $red $red $baseA3
-            inactive_workspace $orange $orange $baseA3
+            inactive_workspace $blue $blue $baseA3
         }
 }
 
 client.focused $baseA3 $red $baseA3 $red
-client.unfocused $baseA3 $orange $baseA3 $orange
-client.focused_inactive $baseA3 $orange $baseA3 $orange
+client.unfocused $baseA3 $blue $baseA3 $blue
+client.focused_inactive $baseA3 $blue $baseA3 $blue
 
 workspace 1 output DFP7
 workspace 2 output DFP6
