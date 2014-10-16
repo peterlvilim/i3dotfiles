@@ -109,13 +109,6 @@ client.focused $baseA3 $red $baseA3 $red
 client.unfocused $baseA3 $blue $baseA3 $blue
 client.focused_inactive $baseA3 $blue $baseA3 $blue
 
-workspace 1 output DFP7
-workspace 2 output DFP6
-workspace 3 output DFP1
-workspace 7 output DFP7
-workspace 8 output DFP6
-workspace 9 output DFP1
-
 #new_window 1pixel
 for_window [title=" - Google Chrome$"] border none
 for_window [title="Spotify Premium - Linux Preview"] border none
