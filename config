@@ -119,7 +119,7 @@ workspace 9 output DFP1
 #new_window 1pixel
 for_window [title=" - Google Chrome$"] border none
 for_window [title="Spotify Premium - Linux Preview"] border none
-bindsym $MOD+SHIFT+s exec spotify
+bindsym $MOD+SHIFT+s exec /usr/bin/mopidy
 bindsym $MOD+SHIFT+g exec --no-startup-id google-chrome
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
 bindsym $MOD+SHIFT+d exec --no-startup-id dwb
