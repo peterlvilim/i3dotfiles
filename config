@@ -109,13 +109,6 @@ client.focused $baseA3 $red $baseA3 $red
 client.unfocused $baseA3 $blue $baseA3 $blue
 client.focused_inactive $baseA3 $blue $baseA3 $blue
 
-workspace 1 output DFP7
-workspace 2 output DFP6
-workspace 3 output DFP1
-workspace 7 output DFP7
-workspace 8 output DFP6
-workspace 9 output DFP1
-
 #new_window 1pixel
 for_window [title=" - Google Chrome$"] border none
 for_window [title="Spotify Premium - Linux Preview"] border none
@@ -123,6 +116,7 @@ bindsym $MOD+SHIFT+s exec spotify
 bindsym $MOD+SHIFT+g exec --no-startup-id google-chrome
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
 bindsym $MOD+SHIFT+d exec --no-startup-id dwb
+bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 bindsym $MOD+SHIFT+z exec ~/.i3/suspend.sh
 
