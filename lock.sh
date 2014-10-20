@@ -1,2 +1,3 @@
 #!/bin/sh
-i3lock -d -u -c 000000
+#i3lock -d -u -c 000000
+slock
