@@ -115,7 +115,7 @@ for_window [title="Spotify Premium - Linux Preview"] border none
 bindsym $MOD+SHIFT+g exec --no-startup-id google-chrome
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
 bindsym $MOD+SHIFT+d exec --no-startup-id dwb
-bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q
+bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q -o -u quiet
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 bindsym $MOD+SHIFT+z exec ~/.i3/suspend.sh
 
