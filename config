@@ -123,10 +123,10 @@ bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
 bindsym $MOD+Down exec --no-startup-id amixer set Master 5%-
 bindsym $MOD+Left exec --no-startup-id amixer set Master toggle
 bindsym $MOD+Right exec --no-startup-id amixer set Master toggle
-bindsym $mod+SHIFT+Left exec --no-startup-id ~/.i3/spotifyctl.py --previous
-bindsym $mod+SHIFT+Up exec --no-startup-id ~/.i3/spotifyctl.py --playpause
-bindsym $mod+SHIFT+Down exec --no-startup-id ~/.i3/spotifyctl.py --playpause
-bindsym $mod+SHIFT+Right exec --no-startup-id ~/.i3/spotifyctl.py --next
+bindsym $mod+SHIFT+Left exec --no-startup-id mpc previous
+bindsym $mod+SHIFT+Up exec --no-startup-id mpc toggle
+bindsym $mod+SHIFT+Down exec --no-startup-id mpc toggle
+bindsym $mod+SHIFT+Right exec --no-startup-id mpc next
 
 bindsym $MOD+p exec scrot -s /tmp/screen.png
 
