@@ -29,6 +29,11 @@ import json
 import commands
 import subprocess
 
+def get_mpc():
+    result=commands.getstatusoutput("mpc current");
+    if "refused" not in result[1]:
+        return result[1];
+
 def get_cal():
     proc = subprocess.Popen("/home/pvilim/.i3/getcalstatus.py");
     result=commands.getstatusoutput("cat ~/.i3/cal.status");
@@ -77,7 +82,7 @@ if __name__ == '__main__':
         j = json.loads(line)
         # insert information into the start of the json, but could be anywhere
         j.insert(5, {'full_text' : '%s' % " ".join(get_cal().split()), 'name' : 'cal','color':'#268bd2'})
-	j.insert(0, {'full_text' : '%s' % get_spotify(), 'name' : 'spotify','color':'#859900'})
+	j.insert(0, {'full_text' : '%s' % get_mpc(), 'name' : 'mpc','color':'#859900'})
 	j.insert(0,{'full_text':'%s' % get_sab(),'name':'sabnzbd','color':'#b58900'})
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
