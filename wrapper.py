@@ -32,7 +32,7 @@ import subprocess
 def get_mpc():
     result=commands.getstatusoutput("mpc current")
     output = "N/A"
-    if "error" not in result[1]:
+    if "error" not in result[1] and result[1] != "":
         output = result[1]
     return output
 
