@@ -30,10 +30,11 @@ import commands
 import subprocess
 
 def get_mpc():
-    result=commands.getstatusoutput("mpc current");
-    if "refused" not in result[1]:
-        result[1] = N/a;
-    return result[1];
+    result=commands.getstatusoutput("mpc current")
+    output = "N/A"
+    if "error" not in result[1]:
+        output = result[1]
+    return output
 
 def get_cal():
     proc = subprocess.Popen("/home/pvilim/.i3/getcalstatus.py");
