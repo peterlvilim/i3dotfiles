@@ -8,7 +8,7 @@ from stopifalreadyrunning import *;
 stop_if_already_running(os.path.basename(__file__));
 time.sleep(30);
 try:
-    result=commands.getstatusoutput("gcal --nc --ignore-started agenda \"`date`\" | head -2 | tail -1")
+    result=commands.getstatusoutput("gcalcli --pw `pass peterlvilim@gmail.com` --nc --ignore-started agenda \"`date`\" | head -2 | tail -1")
     if "Error" not in result[1] and "Exception" not in result[1]:
         f = open("/home/pvilim/.i3/cal.status", "w");
         f.write(result[1]);
