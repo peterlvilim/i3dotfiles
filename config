@@ -1,3 +1,4 @@
+#key binds
 set $mod Mod1
 set $windowkey Mod4
 
@@ -20,8 +21,7 @@ set $baseB2 #eee8d5
 set $baseB3 #fdf6e3
 set $custom #001b26
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below. ISO 10646 = Unicode
+# window and bar font
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # start a terminal
@@ -30,6 +30,7 @@ bindsym $mod+Return exec urxvtcd
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# focus windows
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -55,18 +56,6 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -90,8 +79,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' '~/.i3/i3exit.sh'"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+#i3bar
 bar {
 	status_command i3status -c ~/.i3/.i3status.conf | /home/pvilim/.i3/wrapper.py
         colors {
@@ -104,28 +92,31 @@ bar {
         }
 }
 
+# window colors
 client.focused $baseA3 $red $baseA3 $red
 client.unfocused $baseA3 $blue $baseA3 $blue
 client.focused_inactive $baseA3 $blue $baseA3 $blue
 
-#new_window 1pixel
+# window borders and layout
 for_window [title=" - Google Chrome$"] border none
 for_window [title="Spotify Premium - Linux Preview"] border none
 for_window [class="Dwb"] focus child, layout tabbed, focus
 
+# application launch hotkeys
 bindsym $MOD+SHIFT+g exec --no-startup-id google-chrome
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
 bindsym $MOD+SHIFT+d exec --no-startup-id dwb
 bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q -o -u quiet
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
-bindsym $MOD+SHIFT+z exec powermenu
 
 #menus
 bindsym $MOD+p exec passmenu
 bindsym $MOD+o exec openmenu
 bindsym $mod+d exec desktopmenu
 bindsym $mod+i exec windowmenu
+bindsym $MOD+SHIFT+z exec powermenu
 
+#sound and music controls
 bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
 bindsym $MOD+Down exec --no-startup-id amixer set Master 5%-
 bindsym $MOD+Left exec --no-startup-id amixer set Master toggle
@@ -135,4 +126,5 @@ bindsym $mod+SHIFT+Up exec --no-startup-id mpc toggle
 bindsym $mod+SHIFT+Down exec --no-startup-id mpc toggle
 bindsym $mod+SHIFT+Right exec --no-startup-id mpc next
 
+#startup script
 exec ~/.i3/i3start.sh
