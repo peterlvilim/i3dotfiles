@@ -115,7 +115,7 @@ bindsym $MOD+o exec openmenu
 bindsym $mod+d exec desktopmenu
 bindsym $mod+i exec windowmenu
 bindsym $MOD+SHIFT+z exec powermenu
-
+bindsym $MOD+r exec runmenu
 #sound and music controls
 bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
 bindsym $MOD+Down exec --no-startup-id amixer set Master 5%-
