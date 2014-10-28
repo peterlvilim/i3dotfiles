@@ -109,14 +109,23 @@ bindsym $MOD+SHIFT+d exec --no-startup-id dwb
 bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q -o -u quiet
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
-#menus
+# monitors
+-workspace 1 output DFP7
+-workspace 2 output DFP6
+-workspace 3 output DFP1
+-workspace 7 output DFP7
+-workspace 8 output DFP6
+-workspace 9 output DFP1
+
+# menus
 bindsym $MOD+p exec passmenu
 bindsym $MOD+o exec openmenu
 bindsym $mod+d exec desktopmenu
 bindsym $mod+i exec windowmenu
 bindsym $MOD+SHIFT+z exec powermenu
 bindsym $MOD+r exec runmenu
-#sound and music controls
+
+# sound and music controls
 bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
 bindsym $MOD+Down exec --no-startup-id amixer set Master 5%-
 bindsym $MOD+Left exec --no-startup-id amixer set Master toggle
