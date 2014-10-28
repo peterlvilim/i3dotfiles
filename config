@@ -1,8 +1,8 @@
-#key binds
+# key binds
 set $mod Mod1
 set $windowkey Mod4
 
-#colors
+# colors
 set $yellow   #b58900
 set $orange   #cb4b16
 set $red  #dc322f
@@ -109,14 +109,15 @@ bindsym $MOD+SHIFT+d exec --no-startup-id dwb
 bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q -o -u quiet
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
-#menus
+# menus
 bindsym $MOD+p exec passmenu
 bindsym $MOD+o exec openmenu
 bindsym $mod+d exec desktopmenu
 bindsym $mod+i exec windowmenu
 bindsym $MOD+SHIFT+z exec powermenu
+bindsym $MOD+r exec runmenu
 
-#sound and music controls
+# sound and music controls
 bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
 bindsym $MOD+Down exec --no-startup-id amixer set Master 5%-
 bindsym $MOD+Left exec --no-startup-id amixer set Master toggle
@@ -126,5 +127,5 @@ bindsym $mod+SHIFT+Up exec --no-startup-id mpc toggle
 bindsym $mod+SHIFT+Down exec --no-startup-id mpc toggle
 bindsym $mod+SHIFT+Right exec --no-startup-id mpc next
 
-#startup script
+# startup script
 exec ~/.i3/i3start.sh
