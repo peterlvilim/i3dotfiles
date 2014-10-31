@@ -5,7 +5,7 @@ import sys
 import os
 stop_if_already_running(os.path.basename(__file__));
 time.sleep(5);
-s = SABnzbd('hydrogen.local', 8080, 'f78a3823cf2853e0702f8970b4947713')
+s = SABnzbd('hydrogen.local', 8081, 'f78a3823cf2853e0702f8970b4947713')
 try:
         status=s.status();
 except:
