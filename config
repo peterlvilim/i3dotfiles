@@ -1,7 +1,7 @@
 # key binds
 set $mod Mod1
 set $windowkey Mod4
-
+set $ctrl Ctrl
 # colors
 set $yellow   #b58900
 set $orange   #cb4b16
@@ -27,14 +27,23 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # start a terminal
 bindsym $mod+Return exec urxvtcd
 
-# kill focused window
+# kill focused window or container
 bindsym $mod+Shift+q kill
+
+# default layout
+workspace_layout tabbed
 
 # focus windows
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+a focus parent
+bindsym $mod+ctrl+h focus parent focus left
+bindsym $mod+ctrl+j focus parent focus down
+bindsym $mod+ctrl+k focus parent focus up
+bindsym $mod+ctrl+l focus parent focus right
+force_focus_wrapping yes
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -43,10 +52,10 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+g split h
+bindsym $mod+g focus parent split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v focus parent split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -72,8 +81,6 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-#bindsym $mod+Shift+r restart #only enable if doing setup
 
 # i3bar
 bar {
@@ -97,7 +104,7 @@ client.focused_inactive $baseA3 $blue $baseA3 $blue
 for_window [title=" - Google Chrome$"] border none
 for_window [title="Spotify Premium - Linux Preview"] border none
 for_window [class="Dwb"] focus child, layout tabbed, focus
-
+for_window [] layout tabbed
 # application launch hotkeys
 bindsym $MOD+SHIFT+g exec --no-startup-id google-chrome
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
@@ -105,7 +112,7 @@ bindsym $MOD+SHIFT+d exec --no-startup-id dwb
 bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q -o -u quiet
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
-# monitors
+#monitors
 workspace 1 output DFP7
 workspace 2 output DFP6
 workspace 3 output DFP1
@@ -118,7 +125,7 @@ bindsym $MOD+p exec passmenu
 bindsym $MOD+o exec openmenu
 bindsym $mod+d exec desktopmenu
 bindsym $mod+i exec windowmenu
-bindsym $MOD+SHIFT+z exec powermenu
+bindsym $MOD+u exec powermenu
 bindsym $MOD+r exec runmenu
 
 # sound and music controls
@@ -126,7 +133,7 @@ bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
 bindsym $MOD+Down exec --no-startup-id amixer set Master 5%-
 bindsym $MOD+Left exec --no-startup-id amixer set Master toggle
 bindsym $MOD+Right exec --no-startup-id amixer set Master toggle
-bindsym $mod+SHIFT+Left exec --no-startup-id mpc prev
+bindsym $mod+SHIFT+Left exec --no-startup-id mpc previous
 bindsym $mod+SHIFT+Up exec --no-startup-id mpc toggle
 bindsym $mod+SHIFT+Down exec --no-startup-id mpc toggle
 bindsym $mod+SHIFT+Right exec --no-startup-id mpc next
