@@ -1,7 +1,7 @@
 # key binds
 set $mod Mod1
 set $windowkey Mod4
-
+set $ctrl Ctrl
 # colors
 set $yellow   #b58900
 set $orange   #cb4b16
@@ -39,6 +39,10 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 bindsym $mod+a focus parent
+bindsym $mod+ctrl+h focus parent focus left
+bindsym $mod+ctrl+j focus parent focus down
+bindsym $mod+ctrl+k focus parent focus up
+bindsym $mod+ctrl+l focus parent focus right
 force_focus_wrapping yes
 
 # move focused window
@@ -48,10 +52,10 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+g split h
+bindsym $mod+g focus parent split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v focus parent split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -119,7 +123,7 @@ bindsym $MOD+p exec passmenu
 bindsym $MOD+o exec openmenu
 bindsym $mod+d exec desktopmenu
 bindsym $mod+i exec windowmenu
-bindsym $MOD+SHIFT+z exec powermenu
+bindsym $MOD+u exec powermenu
 bindsym $MOD+r exec runmenu
 
 # sound and music controls
@@ -127,7 +131,7 @@ bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
 bindsym $MOD+Down exec --no-startup-id amixer set Master 5%-
 bindsym $MOD+Left exec --no-startup-id amixer set Master toggle
 bindsym $MOD+Right exec --no-startup-id amixer set Master toggle
-bindsym $mod+SHIFT+Left exec --no-startup-id mpc previous
+bindsym $mod+SHIFT+Left exec --no-startup-id mpc prev
 bindsym $mod+SHIFT+Up exec --no-startup-id mpc toggle
 bindsym $mod+SHIFT+Down exec --no-startup-id mpc toggle
 bindsym $mod+SHIFT+Right exec --no-startup-id mpc next
