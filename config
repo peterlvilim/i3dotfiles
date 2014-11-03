@@ -27,8 +27,11 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # start a terminal
 bindsym $mod+Return exec urxvtcd
 
-# kill focused window
+# kill focused window or container
 bindsym $mod+Shift+q kill
+
+# default layout
+workspace_layout tabbed
 
 # focus windows
 bindsym $mod+h focus left
@@ -36,6 +39,8 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 bindsym $mod+a focus parent
+force_focus_wrapping yes
+
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
@@ -101,7 +106,7 @@ client.focused_inactive $baseA3 $blue $baseA3 $blue
 for_window [title=" - Google Chrome$"] border none
 for_window [title="Spotify Premium - Linux Preview"] border none
 for_window [class="Dwb"] focus child, layout tabbed, focus
-
+for_window [] layout tabbed
 # application launch hotkeys
 bindsym $MOD+SHIFT+g exec --no-startup-id google-chrome
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
