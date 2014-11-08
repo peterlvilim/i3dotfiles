@@ -108,6 +108,7 @@ client.focused_inactive $baseA3 $blue $baseA3 $blue
 
 # window borders and layout
 for_window [title=" - Google Chrome$"] border none
+for_window [title=" - VIM$"] #000000 #000000 #000000
 for_window [title="Spotify Premium - Linux Preview"] border none
 for_window [class="Dwb"] focus child, layout tabbed, focus
 for_window [] layout tabbed
@@ -121,7 +122,6 @@ bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 # menus
 bindsym $MOD+p exec passmenu
 bindsym $MOD+o exec openmenu
-bindsym $mod+d exec desktopmenu
 bindsym $mod+i exec windowmenu
 bindsym $MOD+u exec powermenu
 bindsym $MOD+r exec runmenu
