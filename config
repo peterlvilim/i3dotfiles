@@ -123,7 +123,6 @@ workspace 9 output DFP1
 # menus
 bindsym $MOD+p exec passmenu
 bindsym $MOD+o exec openmenu
-bindsym $mod+d exec desktopmenu
 bindsym $mod+i exec windowmenu
 bindsym $MOD+u exec powermenu
 bindsym $MOD+r exec runmenu
