@@ -90,7 +90,7 @@ bar {
             background $baseA2
             statusline $baseB2
             focused_workspace $red $red $baseA3
-            active_workspace $red $red $baseA3
+            active_workspace $orange $orange $baseA3
             inactive_workspace $blue $blue $baseA3
         }
 }
@@ -98,7 +98,7 @@ bar {
 # window colors
 client.focused $baseA3 $red $baseA3 $red
 client.unfocused $baseA3 $blue $baseA3 $blue
-client.focused_inactive $baseA3 $blue $baseA3 $blue
+client.focused_inactive $baseA3 $orange $baseA3 $orange
 
 # window borders and layout
 for_window [title=" - Google Chrome$"] border none
@@ -113,14 +113,15 @@ bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q -o -u quiet
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
 #monitors
-workspace 1 output DFP7
-workspace 2 output DFP6
+workspace 1 output DFP6
+workspace 2 output DFP7
 workspace 3 output DFP1
-workspace 7 output DFP7
-workspace 8 output DFP6
+workspace 7 output DFP6
+workspace 8 output DFP7
 workspace 9 output DFP1
 
 # menus
+bindsym $MOD+y exec gitmenu
 bindsym $MOD+p exec passmenu
 bindsym $MOD+o exec openmenu
 bindsym $mod+i exec windowmenu

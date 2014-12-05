@@ -22,8 +22,8 @@ read eth0_tx < "${eth0}/tx_bytes"
 
 # get time and sum of rx/tx for combined display
 time=$(date +%s)
-rx=$(( $eth0_rx + $wlan0_rx ))
-tx=$(( $eth0_tx + $wlan0_tx ))
+rx=$(( $eth0_rx))
+tx=$(( $eth0_tx))
 
 # write current data if file does not exist. Do not exit, this will cause
 # problems if this file is sourced instead of executed as another process.
