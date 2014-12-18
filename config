@@ -101,14 +101,14 @@ client.unfocused $baseA3 $blue $baseA3 $blue
 client.focused_inactive $baseA3 $orange $baseA3 $orange
 
 # window borders and layout
-for_window [title=" - Google Chrome$"] border none
+for_window [title=" - Chromium$"] border none
 for_window [title="Spotify Premium - Linux Preview"] border none
 for_window [class="Dwb"] focus child, layout tabbed, focus
 for_window [] layout tabbed
 # application launch hotkeys
-bindsym $MOD+SHIFT+g exec --no-startup-id google-chrome
+bindsym $MOD+SHIFT+g exec --no-startup-id chromium
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
-bindsym $MOD+SHIFT+d exec --no-startup-id dwb
+bindsym $MOD+SHIFT+d exec --no-startup-id qutebrowser
 bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q -o -u quiet
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
