@@ -88,7 +88,7 @@ if __name__ == '__main__':
         j = json.loads(line)
         # insert information into the start of the json, but could be anywhere
         j.insert(5, {'full_text' : '%s' % " ".join(get_cal().split()), 'name' : 'cal','color':'#268bd2'})
-        # j.insert(3, {'full_text' : '%s' % " ".join(get_speed().split()), 'name' : 'speed','color':'#859900'})
+        j.insert(3, {'full_text' : '%s' % " ".join(get_speed().split()), 'name' : 'speed','color':'#859900'})
 	j.insert(0, {'full_text' : '%s' % get_mpc(), 'name' : 'mpc','color':'#859900'})
 	j.insert(0,{'full_text':'%s' % get_sab(),'name':'sabnzbd','color':'#b58900'})
         # and echo back new encoded json
