@@ -13,17 +13,17 @@ path="/dev/shm/measure-net-speed"
 #  find /sys/devices -name statistics
 # If you have more (or less) than two adapters, simply adjust the script here
 # and in the next block. 
-eth0="/sys/devices/pci0000:00/0000:00:19.0/net/eth0/statistics"
+eno1="/sys/devices/pci0000:00/0000:00:19.0/net/eno1/statistics"
 #wlan0="/sys/devices/pci0000:00/0000:00:1c.1/0000:03:00.0/net/wlan0/statistics"
-read eth0_rx < "${eth0}/rx_bytes"
-read eth0_tx < "${eth0}/tx_bytes"
+read eno1_rx < "${eno1}/rx_bytes"
+read eno1_tx < "${eno1}/tx_bytes"
 #read wlan0_rx < "${wlan0}/rx_bytes"
 #read wlan0_tx < "${wlan0}/tx_bytes"
 
 # get time and sum of rx/tx for combined display
 time=$(date +%s)
-rx=$(( $eth0_rx))
-tx=$(( $eth0_tx))
+rx=$(( $eno1_rx))
+tx=$(( $eno1_tx))
 
 # write current data if file does not exist. Do not exit, this will cause
 # problems if this file is sourced instead of executed as another process.
