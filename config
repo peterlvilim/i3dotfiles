@@ -105,10 +105,11 @@ for_window [title=" - Chromium$"] border none
 for_window [title="Spotify Premium - Linux Preview"] border none
 for_window [class="Dwb"] focus child, layout tabbed, focus
 for_window [] layout tabbed
+
 # application launch hotkeys
 bindsym $MOD+SHIFT+g exec --no-startup-id chromium
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
-bindsym $MOD+SHIFT+d exec --no-startup-id qutebrowser
+bindsym $MOD+SHIFT+d exec --no-startup-id /home/pvilim/code/qutebrowser/qutebrowser.py
 bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q -o -u quiet
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
@@ -121,12 +122,14 @@ workspace 8 output DFP7
 workspace 9 output DFP1
 
 # menus
-bindsym $MOD+y exec gitmenu
-bindsym $MOD+p exec passmenu
-bindsym $MOD+o exec openmenu
-bindsym $mod+i exec windowmenu
-bindsym $MOD+u exec powermenu
-bindsym $MOD+r exec runmenu
+bindsym $windowkey+y exec gitmenu
+bindsym $windowkey+p exec passmenu
+bindsym $windowkey+o exec openmenu
+bindsym $windowkey+i exec windowmenu
+bindsym $windowkey+u exec powermenu
+bindsym $windowkey+r exec runmenu
+bindsym $windowkey+t exec twitchmenu
+bindsym $windowkey+v exec videomenu
 
 # sound and music controls
 bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
