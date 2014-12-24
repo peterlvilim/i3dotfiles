@@ -114,12 +114,14 @@ bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q -o -u quiet
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
 # menus
-bindsym $MOD+p exec passmenu
-bindsym $MOD+o exec openmenu
-bindsym $mod+i exec windowmenu
-bindsym $MOD+u exec powermenu
-bindsym $MOD+r exec runmenu
-bindsym $MOD+y exec gitmenu
+bindsym $windowkey+p exec passmenu
+bindsym $windowkey+o exec openmenu
+bindsym $windowkey+i exec windowmenu
+bindsym $windowkey+u exec powermenu
+bindsym $windowkey+r exec runmenu
+bindsym $windowkey+y exec gitmenu
+bindsym $windowkey+t exec twitchmenu
+bindsym $windowkey+n exec netctlmenu
 
 # sound and music controls
 bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
