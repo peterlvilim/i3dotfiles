@@ -46,12 +46,16 @@ def get_spotify():
     return result[1];
 
 def get_sab():
-    proc = subprocess.Popen("/home/pvilim/.i3/getsabstatus.py");
+    proc = subprocess.Popen("/home/pvilim//.i3/getsabstatus.py");
     result=commands.getstatusoutput("cat ~/.i3/sab.status");
     return result[1];
 
+def get_nzbget():
+    result = commands.getstatusoutput("~/.i3/nzbgetstatus.sh")
+    return result[1]
+
 def get_speed():
-    result=commands.getstatusoutput("/home/pvilim/.i3/speed.sh");
+    result=commands.getstatusoutput("~/.i3/speed.sh");
     return result[1];
 
 def print_line(message):
@@ -88,8 +92,9 @@ if __name__ == '__main__':
         j = json.loads(line)
         # insert information into the start of the json, but could be anywhere
         j.insert(5, {'full_text' : '%s' % " ".join(get_cal().split()), 'name' : 'cal','color':'#268bd2'})
-        j.insert(3, {'full_text' : '%s' % " ".join(get_speed().split()), 'name' : 'speed','color':'#859900'})
+        j.insert(4, {'full_text' : '%s' % " ".join(get_speed().split()), 'name' : 'speed','color':'#859900'})
 	j.insert(0, {'full_text' : '%s' % get_mpc(), 'name' : 'mpc','color':'#859900'})
-	j.insert(0,{'full_text':'%s' % get_sab(),'name':'sabnzbd','color':'#b58900'})
+	# j.insert(0,{'full_text':'%s' % get_sab(),'name':'sabnzbd','color':'#b58900'})
+	j.insert(0,{'full_text':'%s' % get_nzbget(),'name':'nzbget','color':'#b58900'})
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
