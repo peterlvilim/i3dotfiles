@@ -98,7 +98,7 @@ bar {
 # window colors
 client.focused $baseA3 $red $baseA3 $red
 client.unfocused $baseA3 $blue $baseA3 $blue
-client.focused_inactive $baseA3 $blue $baseA3 $blue
+client.focused_inactive $baseA3 $orange $baseA3 $orange
 
 # window borders and layout
 for_window [title=" - Chromium$"] border none
@@ -113,12 +113,12 @@ bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q -o -u quiet
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
 # menus
+bindsym $windowkey+y exec gitmenu
 bindsym $windowkey+p exec passmenu
 bindsym $windowkey+o exec openmenu
 bindsym $windowkey+i exec windowmenu
 bindsym $windowkey+u exec powermenu
 bindsym $windowkey+r exec runmenu
-bindsym $windowkey+y exec gitmenu
 bindsym $windowkey+t exec twitchmenu
 bindsym $windowkey+n exec netctlmenu
 bindsym $windowkey+v exec videomenu
