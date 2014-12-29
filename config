@@ -129,6 +129,7 @@ bindsym $windowkey+i exec windowmenu
 bindsym $windowkey+u exec powermenu
 bindsym $windowkey+r exec runmenu
 bindsym $windowkey+t exec twitchmenu
+bindsym $windowkey+n exec netctlmenu
 bindsym $windowkey+v exec videomenu
 
 # sound and music controls
