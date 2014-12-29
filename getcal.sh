@@ -1,1 +1,1 @@
-gcalcli agenda "`date`" | head -2 | tail -1
+gcalcli --nocolor agenda "`date`" | head -2 | tail -1
