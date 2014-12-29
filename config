@@ -102,7 +102,6 @@ client.focused_inactive $baseA3 $blue $baseA3 $blue
 
 # window borders and layout
 for_window [title=" - Chromium$"] border none
-for_window [title=" - VIM$"] #000000 #000000 #000000
 for_window [title="Spotify Premium - Linux Preview"] border none
 for_window [class="Dwb"] focus child, layout tabbed, focus
 for_window [] layout tabbed
@@ -122,6 +121,7 @@ bindsym $windowkey+r exec runmenu
 bindsym $windowkey+y exec gitmenu
 bindsym $windowkey+t exec twitchmenu
 bindsym $windowkey+n exec netctlmenu
+bindsym $windowkey+v exec videomenu
 
 # sound and music controls
 bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
