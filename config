@@ -142,5 +142,9 @@ bindsym $mod+SHIFT+Up exec --no-startup-id mpc toggle
 bindsym $mod+SHIFT+Down exec --no-startup-id mpc toggle
 bindsym $mod+SHIFT+Right exec --no-startup-id mpc next
 
+#light
+bindsym $windowkey+Up exec --no-startup-id xbacklight -inc 20
+bindsym $windowkey+Down exec --no-startup-id xbacklight -dec 20
+
 # startup script
 exec ~/.i3/i3start.sh
