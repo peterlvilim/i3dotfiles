@@ -108,8 +108,8 @@ for_window [] layout tabbed
 # application launch hotkeys
 bindsym $MOD+SHIFT+g exec --no-startup-id chromium
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
-bindsym $MOD+SHIFT+d exec --no-startup-id ~/code/qute/qutebrowser.py
-bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -q -o -u quiet
+bindsym $MOD+SHIFT+d exec --no-startup-id /home/pvilim/code/qutebrowser/qutebrowser.py
+bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap -o -u quiet
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
 # menus
