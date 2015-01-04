@@ -3,4 +3,6 @@ xrandr --output DisplayPort-0 --left-of DVI-0
 xrandr --output DVI-1 --right-of DVI-0
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
+compton -CGb
+hsetroot -solid "#001b26" &
 exec i3
