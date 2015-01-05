@@ -11,11 +11,7 @@ notifications = []
 
 # Returns the full notification text.
 def full_text(notification):
-    if len(notification["summary"] + notification["body"]) + 1 > strlimit:
-        return "{} - {}".format(notification["summary"],
-                                notification["body"])[:strlimit - 3] + "..."
-    else:
-        return "{} - {}".format(notification["summary"], notification["body"])
+        return "{}".format(notification["summary"])
 
 
 # Returns the short notification text.
