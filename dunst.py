@@ -11,7 +11,7 @@ notifications = []
 
 # Returns the full notification text.
 def full_text(notification):
-        return "{}".format(notification["summary"])
+    return "{}".format(notification["summary"])
 
 
 # Returns the short notification text.

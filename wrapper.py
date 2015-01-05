@@ -100,7 +100,7 @@ if __name__ == '__main__':
         j.insert(4, {'full_text' : '%s' % " ".join(get_speed().split()), 'name' : 'speed','color':'#859900'})
         j.insert(0, {'full_text' : '%s' % get_mpc(), 'name' : 'mpc','color':'#859900'})
         j.insert(0,{'full_text':'%s' % get_nzbget(),'name':'nzbget','color':'#b58900'})
-        j.insert(0,{'full_text':'%s' % get_dunst(),'name':'nzbget','color':'#268bd2'})
+        j.insert(0,{'full_text':'%s' % get_dunst(),'name':'dunst','color':'#268bd2'})
 
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
