@@ -54,6 +54,10 @@ def get_nzbget():
     result = commands.getstatusoutput("~/.i3/nzbgetstatus.sh")
     return result[1]
 
+def get_dunst():
+    result = commands.getstatusoutput("BLOCK_I3=true BLOCK_INSTANCE=NEWEST ~/.i3/dunst.py")
+    return result[1]
+
 def get_speed():
     result=commands.getstatusoutput("~/.i3/speed.sh");
     return result[1];
@@ -90,11 +94,13 @@ if __name__ == '__main__':
             line, prefix = line[1:], ','
 
         j = json.loads(line)
+
         # insert information into the start of the json, but could be anywhere
         j.insert(5, {'full_text' : '%s' % " ".join(get_cal().split()), 'name' : 'cal','color':'#268bd2'})
         j.insert(4, {'full_text' : '%s' % " ".join(get_speed().split()), 'name' : 'speed','color':'#859900'})
-	j.insert(0, {'full_text' : '%s' % get_mpc(), 'name' : 'mpc','color':'#859900'})
-	# j.insert(0,{'full_text':'%s' % get_sab(),'name':'sabnzbd','color':'#b58900'})
-	j.insert(0,{'full_text':'%s' % get_nzbget(),'name':'nzbget','color':'#b58900'})
+        j.insert(0, {'full_text' : '%s' % get_mpc(), 'name' : 'mpc','color':'#859900'})
+        j.insert(0,{'full_text':'%s' % get_nzbget(),'name':'nzbget','color':'#b58900'})
+        j.insert(0,{'full_text':'%s' % get_dunst(),'name':'nzbget','color':'#268bd2'})
+
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
