@@ -29,43 +29,53 @@ import json
 import commands
 import subprocess
 
+
 def get_mpc():
-    result=commands.getstatusoutput("mpc current")
+    result = commands.getstatusoutput("mpc current")
     output = "N/A"
     if "error" not in result[1] and result[1] != "":
         output = result[1]
     return output
 
+
 def get_cal():
-    proc = subprocess.Popen("/home/pvilim/.i3/getcalstatus.py");
-    result=commands.getstatusoutput("cat ~/.i3/cal.status");
-    return result[1];
+    subprocess.Popen("/home/pvilim/.i3/getcalstatus.py")
+    result = commands.getstatusoutput("cat ~/.i3/cal.status")
+    return result[1]
+
 
 def get_spotify():
-    result=commands.getstatusoutput("~/.i3/getspotifystatus.py");
-    return result[1];
+    result = commands.getstatusoutput("~/.i3/getspotifystatus.py")
+    return result[1]
+
 
 def get_sab():
-    proc = subprocess.Popen("/home/pvilim//.i3/getsabstatus.py");
-    result=commands.getstatusoutput("cat ~/.i3/sab.status");
-    return result[1];
+    subprocess.Popen("/home/pvilim//.i3/getsabstatus.py")
+    result = commands.getstatusoutput("cat ~/.i3/sab.status")
+    return result[1]
+
 
 def get_nzbget():
     result = commands.getstatusoutput("~/.i3/nzbgetstatus.sh")
     return result[1]
 
+
 def get_dunst():
-    result = commands.getstatusoutput("BLOCK_I3=true BLOCK_INSTANCE=NEWEST ~/.i3/dunst.py")
+    result = commands.getstatusoutput(
+        "BLOCK_I3=true BLOCK_INSTANCE=NEWEST ~/.i3/dunst.py")
     return result[1]
 
+
 def get_speed():
-    result=commands.getstatusoutput("~/.i3/speed.sh");
-    return result[1];
+    result = commands.getstatusoutput("~/.i3/speed.sh")
+    return result[1]
+
 
 def print_line(message):
     """ Non-buffered printing to stdout. """
     sys.stdout.write(message + '\n')
     sys.stdout.flush()
+
 
 def read_line():
     """ Interrupted respecting reader for stdin. """
@@ -96,11 +106,16 @@ if __name__ == '__main__':
         j = json.loads(line)
 
         # insert information into the start of the json, but could be anywhere
-        j.insert(5, {'full_text' : '%s' % " ".join(get_cal().split()), 'name' : 'cal','color':'#268bd2'})
-        j.insert(4, {'full_text' : '%s' % " ".join(get_speed().split()), 'name' : 'speed','color':'#859900'})
-        j.insert(0, {'full_text' : '%s' % get_mpc(), 'name' : 'mpc','color':'#859900'})
-        j.insert(0,{'full_text':'%s' % get_nzbget(),'name':'nzbget','color':'#b58900'})
-        j.insert(0,{'full_text':'%s' % get_dunst(),'name':'dunst','color':'#268bd2'})
+        j.insert(5, {'full_text': '%s' % " ".join(get_cal().split()),
+                     'name': 'cal', 'color': '#268bd2'})
+        j.insert(4, {'full_text': '%s' % " ".join(get_speed().split()),
+                     'name': 'speed', 'color': '#859900'})
+        j.insert(0, {'full_text': '%s' % get_mpc(), 'name': 'mpc',
+                     'color': '#859900'})
+        j.insert(0, {'full_text': '%s' % get_nzbget(), 'name': 'nzbget',
+                     'color': '#b58900'})
+        j.insert(0, {'full_text': '%s' % get_dunst(), 'name': 'dunst',
+                     'color': '#dc322f'})
 
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
