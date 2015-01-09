@@ -123,7 +123,7 @@ def print_notification():
         amount = "({})".format(len(notifications))
     print(full_text(notifications[top]) + amount)
     time_diff = time.time() - notifications[top]["time"]
-    if time_diff > 10:
+    if time_diff > 20:
         delete_top()
     else:
         cycle_top()
