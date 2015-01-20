@@ -3,6 +3,7 @@ import os
 import sys
 import json
 import time
+import re
 
 path = os.environ["HOME"] + "/.cache/i3-dunst/notifications"
 strlimit = 114  # Maximum notification length (without message amount).
@@ -14,7 +15,10 @@ def handle_mutt(notification):
 
 
 def handle_profanity(notification):
-    return notification["body"]
+    output = notification["body"]
+    output = re.split("\(win .\)", output)
+    output = "Chat - " + output[0] + " - " + output[1][1:]
+    return output
 
 
 def handle_default(notification):
