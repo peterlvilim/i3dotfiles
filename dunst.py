@@ -9,17 +9,26 @@ strlimit = 114  # Maximum notification length (without message amount).
 notifications = []
 
 
+def handle_mutt(notification):
+    return "Email - " + notification["summary"]
+
+
+def handle_profanity(notification):
+    return notification["body"]
+
+
+def handle_default(notification):
+    return notification["summary"]
+
+
 # Returns the full notification text.
 def full_text(notification):
-    return "{}".format(notification["summary"])
-
-
-# Returns the short notification text.
-def short_text(notification):
-    if len(notification["summary"]) > strlimit:
-        return notification["summary"][:strlimit - 3] + "..."
+    if "OfflineIMAP" in notification["app"]:
+        return handle_mutt(notification)
+    elif "Profanity" in notification["app"]:
+        return handle_profanity(notification)
     else:
-        return notification["summary"]
+        return handle_default(notification)
 
 
 # Load the notification buffer.
