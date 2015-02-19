@@ -1,24 +1,12 @@
 #!/usr/bin/env python2
-import sys
 import commands
-import os
-import time
-from stopifalreadyrunning import *;
 
-stop_if_already_running(os.path.basename(__file__));
-time.sleep(30);
+
 try:
-    result=commands.getstatusoutput("/home/pvilim/.i3/getcal.sh")
+    result = commands.getstatusoutput('gcalcli --pw `pass peter.vilim@delphix.com` --nocolor agenda "`date`" | head -2 | tail -1')
     if "Error" not in result[1] and "Exception" not in result[1]:
-        f = open("/home/pvilim/.i3/cal.status", "w");
-        f.write(result[1]);
-        f.close();
+        print(result[1])
     else:
-        f = open("/home/pvilim/.i3/cal.status", "w");
-        f.write("No calendar");
-        f.close();
+        print("No calendar")
 except:
-    f = open("/home/pvilim/.i3/cal.status", "w");
-    f.write("No calendar");
-    f.close();
-
+    print("No calendar")
