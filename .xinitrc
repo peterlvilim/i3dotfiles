@@ -1,5 +1,5 @@
 autocutsel -fork &
-autocutsel -selection PRIMARY -fork &
-compton -CGb
-hsetroot -solid "#001b26" &
+autocutsel -selection CLIPBOARD -fork &
+xmodmap ~/.Xmodmap &
+xbindkeys &
 exec i3
