@@ -114,12 +114,12 @@ bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap-notify
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
 #monitors
-workspace 1 output DFP6
-workspace 2 output DFP7
-workspace 3 output DFP1
-workspace 7 output DFP6
-workspace 8 output DFP7
-workspace 9 output DFP1
+workspace 1 output DVI-1
+workspace 2 output DVI-0
+workspace 3 output DisplayPort-0
+workspace 7 output DVI-1
+workspace 8 output DVI-0
+workspace 9 output DisplayPort-0
 
 # menus
 bindsym $windowkey+y exec gitmenu
