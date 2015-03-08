@@ -108,6 +108,8 @@ for_window [] layout tabbed
 
 # application launch hotkeys
 bindsym $MOD+SHIFT+g exec --no-startup-id chromium
+bindsym $MOD+SHIFT+e exec --no-startup-id eclipse
+bindsym $MOD+SHIFT+f exec --no-startup-id firefox
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
 bindsym $MOD+SHIFT+d exec --no-startup-id qutebrowser
 bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap-notify
