@@ -1,5 +1,5 @@
 ! Swap alt and command
-remove Mod1 = Super_L
-remove Mod4 = Alt_L
-add Mod1 = Alt_L
-add Mod4 = Super_L
+! remove Mod1 = Super_L
+! remove Mod4 = Alt_L
+! add Mod1 = Alt_L
+! add Mod4 = Super_L
