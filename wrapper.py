@@ -29,6 +29,8 @@ import json
 import commands
 import subprocess
 
+storedresult = dict()
+
 
 def get_mpc():
     result = commands.getstatusoutput("mpc current")
@@ -38,9 +40,12 @@ def get_mpc():
     return output
 
 
-def get_cal():
-    subprocess.Popen("/home/pvilim/.i3/getcalstatus.py")
-    result = commands.getstatusoutput("cat ~/.i3/cal.status")
+def get_cal(counter):
+    if counter % 60 == 0:
+        result = commands.getstatusoutput("~/.i3/getcalstatus.py")
+        storedresult['cal'] = result
+    else:
+        result = storedresult['cal']
     return result[1]
 
 
@@ -49,25 +54,37 @@ def get_spotify():
     return result[1]
 
 
-def get_sab():
+def get_sab(counter):
     subprocess.Popen("/home/pvilim//.i3/getsabstatus.py")
     result = commands.getstatusoutput("cat ~/.i3/sab.status")
     return result[1]
 
 
-def get_nzbget():
-    result = commands.getstatusoutput("~/.i3/nzbgetstatus.sh")
+def get_nzbget(counter):
+    if counter % 10 == 0:
+        result = commands.getstatusoutput("~/.i3/nzbgetstatus.sh")
+        storedresult['nzbget'] = result
+    else:
+        result = storedresult['nzbget']
     return result[1]
 
 
-def get_newmail():
-    result = commands.getstatusoutput("~/.i3/mailcount.sh")
+def get_mail(counter):
+    if counter % 60 == 0:
+        result = commands.getstatusoutput("~/.i3/mailcount.sh")
+        storedresult['mail'] = result
+    else:
+        result = storedresult['mail']
     return result[1]
 
 
-def get_dunst():
-    result = commands.getstatusoutput(
-        "BLOCK_I3=true BLOCK_INSTANCE=NEWEST ~/.i3/dunst.py")
+def get_dunst(counter):
+    if counter % 2 == 0:
+        result = commands.getstatusoutput(
+            "BLOCK_I3=true BLOCK_INSTANCE=NEWEST ~/.i3/dunst.py")
+        storedresult['dunst'] = result
+    else:
+        result = storedresult['dunst']
     return result[1]
 
 
@@ -95,6 +112,11 @@ def read_line():
     except KeyboardInterrupt:
         sys.exit()
 
+
+def monitor_hotplug():
+    commands.getstatusoutput("/home/pvilim/bin/dohotplug")
+
+
 if __name__ == '__main__':
     # Skip the first line which contains the version header.
     print_line(read_line())
@@ -102,7 +124,11 @@ if __name__ == '__main__':
     # The second line contains the start of the infinite array.
     print_line(read_line())
 
+    counter = 60
     while True:
+        if counter == 0:
+            counter = 60
+
         line, prefix = read_line(), ''
         # ignore comma at start of lines
         if line.startswith(','):
@@ -111,18 +137,20 @@ if __name__ == '__main__':
         j = json.loads(line)
 
         # insert information into the start of the json, but could be anywhere
-        j.insert(5, {'full_text': '%s' % " ".join(get_cal().split()),
+        j.insert(5, {'full_text': '%s' % " ".join(get_cal(counter).split()),
                      'name': 'cal', 'color': '#268bd2'})
         j.insert(4, {'full_text': '%s' % " ".join(get_speed().split()),
                      'name': 'speed', 'color': '#859900'})
         j.insert(0, {'full_text': '%s' % get_mpc(), 'name': 'mpc',
                      'color': '#859900'})
-        j.insert(0, {'full_text': '%s' % get_nzbget(), 'name': 'nzbget',
+        j.insert(0, {'full_text': '%s' % get_nzbget(counter), 'name': 'nzbget',
                      'color': '#b58900'})
-        j.insert(0, {'full_text': '%s' % get_newmail(), 'name': 'newmail',
+        j.insert(0, {'full_text': '%s' % get_mail(counter), 'name': 'nzbget',
                      'color': '#268bd2'})
-        j.insert(0, {'full_text': '%s' % get_dunst(), 'name': 'dunst',
+        j.insert(0, {'full_text': '%s' % get_dunst(counter), 'name': 'dunst',
                      'color': '#dc322f'})
+        monitor_hotplug()
 
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
+        counter = counter - 1
