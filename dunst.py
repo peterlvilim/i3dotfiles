@@ -3,23 +3,36 @@ import os
 import sys
 import json
 import time
+import re
 
 path = os.environ["HOME"] + "/.cache/i3-dunst/notifications"
 strlimit = 114  # Maximum notification length (without message amount).
 notifications = []
 
 
+def handle_mutt(notification):
+    return "Email - " + notification["summary"]
+
+
+def handle_profanity(notification):
+    output = notification["body"]
+    output = re.split("\(win .\)", output)
+    output = "Chat - " + output[0] + " - " + output[1][1:]
+    return output
+
+
+def handle_default(notification):
+    return notification["summary"]
+
+
 # Returns the full notification text.
 def full_text(notification):
-    return "{}".format(notification["summary"])
-
-
-# Returns the short notification text.
-def short_text(notification):
-    if len(notification["summary"]) > strlimit:
-        return notification["summary"][:strlimit - 3] + "..."
+    if "OfflineIMAP" in notification["app"]:
+        return handle_mutt(notification)
+    elif "Profanity" in notification["app"]:
+        return handle_profanity(notification)
     else:
-        return notification["summary"]
+        return handle_default(notification)
 
 
 # Load the notification buffer.
