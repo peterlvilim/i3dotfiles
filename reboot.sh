@@ -1,1 +1,1 @@
-sudo reboot
+sudo systemctl reboot

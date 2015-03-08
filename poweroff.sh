@@ -1,1 +1,1 @@
-sudo poweroff
+sudo systemctl poweroff

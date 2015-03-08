@@ -69,6 +69,15 @@ def get_nzbget(counter):
     return result[1]
 
 
+def get_mail(counter):
+    if counter % 60 == 0:
+        result = commands.getstatusoutput("~/.i3/mailcount.sh")
+        storedresult['mail'] = result
+    else:
+        result = storedresult['mail']
+    return result[1]
+
+
 def get_vpn():
     result = commands.getstatusoutput("~/.i3/vpnstatus.sh")
     return result[1]
@@ -108,6 +117,11 @@ def read_line():
     except KeyboardInterrupt:
         sys.exit()
 
+
+def monitor_hotplug():
+    commands.getstatusoutput("/home/pvilim/bin/dohotplug")
+
+
 if __name__ == '__main__':
     # Skip the first line which contains the version header.
     print_line(read_line())
@@ -138,8 +152,11 @@ if __name__ == '__main__':
                      'color': '#859900'})
         j.insert(0, {'full_text': '%s' % get_nzbget(counter), 'name': 'nzbget',
                      'color': '#b58900'})
+        j.insert(0, {'full_text': '%s' % get_mail(counter), 'name': 'nzbget',
+                     'color': '#268bd2'})
         j.insert(0, {'full_text': '%s' % get_dunst(counter), 'name': 'dunst',
                      'color': '#dc322f'})
+        monitor_hotplug()
 
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
