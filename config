@@ -120,12 +120,12 @@ bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap-notify
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
 # monitors
-workspace "1: browsers" output DP-2
-workspace "2: test" output DP-2
-workspace "3: code" output DP-2
-workspace "7: comm" output DP-3
-workspace "8: IDE" output DP-3
-workspace "9: background" output DP-3
+workspace "1: browsers" output DP-3
+workspace "2: test" output DP-3
+workspace "3: code" output DP-3
+workspace "7: comm" output DP-4
+workspace "8: IDE" output DP-4
+workspace "9: background" output DP-4
 
 # menus
 bindsym $windowkey+y exec gitmenu
