@@ -60,6 +60,11 @@ def get_nzbget():
     return result[1]
 
 
+def get_newmail():
+    result = commands.getstatusoutput("~/.i3/mailcount.sh")
+    return result[1]
+
+
 def get_dunst():
     result = commands.getstatusoutput(
         "BLOCK_I3=true BLOCK_INSTANCE=NEWEST ~/.i3/dunst.py")
@@ -114,6 +119,8 @@ if __name__ == '__main__':
                      'color': '#859900'})
         j.insert(0, {'full_text': '%s' % get_nzbget(), 'name': 'nzbget',
                      'color': '#b58900'})
+        j.insert(0, {'full_text': '%s' % get_newmail(), 'name': 'newmail',
+                     'color': '#268bd2'})
         j.insert(0, {'full_text': '%s' % get_dunst(), 'name': 'dunst',
                      'color': '#dc322f'})
 
