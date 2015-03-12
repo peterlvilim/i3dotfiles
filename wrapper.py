@@ -119,7 +119,8 @@ def read_line():
 
 
 def monitor_hotplug():
-    commands.getstatusoutput("/home/pvilim/bin/dohotplug")
+    commands.getstatusoutput("/home/pvilim/bin/dohotplug DP-3")
+    commands.getstatusoutput("/home/pvilim/bin/dohotplug DP-4")
 
 
 if __name__ == '__main__':
