@@ -117,6 +117,7 @@ bindsym $MOD+SHIFT+f exec --no-startup-id firefox
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
 bindsym $MOD+SHIFT+d exec --no-startup-id qutebrowser
 bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap-notify
+bindsym $MOD+SHIFT+s exec --no-startup-id pavucontrol
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
 
 # monitors
@@ -140,10 +141,10 @@ bindsym $windowkey+v exec videomenu
 bindsym $windowkey+space exec touchpadtoggle
 
 # sound and music controls
-bindsym $MOD+Up exec --no-startup-id amixer set Master 5%+
-bindsym $MOD+Down exec --no-startup-id amixer set Master 5%-
-bindsym $MOD+Left exec --no-startup-id amixer set Master toggle
-bindsym $MOD+Right exec --no-startup-id amixer set Master toggle
+bindsym $MOD+Up exec --no-startup-id ponymix increase 5
+bindsym $MOD+Down exec --no-startup-id ponymix decrease 5
+bindsym $MOD+Left exec --no-startup-id ponymix toggle
+bindsym $MOD+Right exec --no-startup-id ponymix toggle
 bindsym $mod+SHIFT+Left exec --no-startup-id mpc prev
 bindsym $mod+SHIFT+Up exec --no-startup-id mpc toggle
 bindsym $mod+SHIFT+Down exec --no-startup-id mpc toggle

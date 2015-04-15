@@ -42,7 +42,7 @@ def get_mpc():
 
 def get_cal(counter):
     if counter % 60 == 0:
-        result = commands.getstatusoutput("~/.i3/getcalstatus.py")
+        result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/getcalstatus.py")
         storedresult['cal'] = result
     else:
         result = storedresult['cal']
@@ -50,19 +50,19 @@ def get_cal(counter):
 
 
 def get_spotify():
-    result = commands.getstatusoutput("~/.i3/getspotifystatus.py")
+    result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/getspotifystatus.py")
     return result[1]
 
 
 def get_sab(counter):
-    subprocess.Popen("/home/pvilim//.i3/getsabstatus.py")
-    result = commands.getstatusoutput("cat ~/.i3/sab.status")
+    subprocess.Popen("timeout3 -t 5 /home/pvilim//.i3/getsabstatus.py")
+    result = commands.getstatusoutput("timeout3 -t 5 cat ~/.i3/sab.status")
     return result[1]
 
 
 def get_nzbget(counter):
     if counter % 10 == 0:
-        result = commands.getstatusoutput("~/.i3/nzbgetstatus.sh")
+        result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/nzbgetstatus.sh")
         storedresult['nzbget'] = result
     else:
         result = storedresult['nzbget']
@@ -71,7 +71,7 @@ def get_nzbget(counter):
 
 def get_mail(counter):
     if counter % 60 == 0:
-        result = commands.getstatusoutput("~/.i3/mailcount.sh")
+        result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/mailcount.sh")
         storedresult['mail'] = result
     else:
         result = storedresult['mail']
@@ -79,14 +79,14 @@ def get_mail(counter):
 
 
 def get_vpn():
-    result = commands.getstatusoutput("~/.i3/vpnstatus.sh")
+    result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/vpnstatus.sh")
     return result[1]
 
 
 def get_dunst(counter):
     if counter % 2 == 0:
         result = commands.getstatusoutput(
-            "BLOCK_I3=true BLOCK_INSTANCE=NEWEST ~/.i3/dunst.py")
+            "BLOCK_I3=true BLOCK_INSTANCE=NEWEST timeout3 -t 5 ~/.i3/dunst.py")
         storedresult['dunst'] = result
     else:
         result = storedresult['dunst']
@@ -94,7 +94,7 @@ def get_dunst(counter):
 
 
 def get_speed():
-    result = commands.getstatusoutput("~/.i3/speed.sh")
+    result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/speed.sh")
     return result[1]
 
 
@@ -119,7 +119,7 @@ def read_line():
 
 
 def monitor_hotplug():
-    commands.getstatusoutput("/home/pvilim/bin/dohotplug DP-3")
+    commands.getstatusoutput("timeout3 -t 5 /home/pvilim/bin/dohotplug DP-3")
 
 
 if __name__ == '__main__':
