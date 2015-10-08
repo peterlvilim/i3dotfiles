@@ -3,4 +3,4 @@ baseA3=#002b36
 baseA2=#073642
 baseA0=#657b83
 orange=#cb4b16
-exec dmenu  -b -h 18  -i -nb $baseA3 -nf $baseA0 -sb $baseA2 -sf $orange "$@" -fn -Misc-Fixed-Medium-R-Normal--18-120-100-100-C-90-ISO10646-1 -h 29
+exec dmenu  -b -h 31  -i -nb "#333333" -nf $baseA0 -sb "#333333" -sf "#1793D1" "$@" -fn -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1 -h 31

@@ -42,27 +42,30 @@ def get_mpc():
 
 def get_cal(counter):
     if counter % 60 == 0:
-        result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/getcalstatus.py")
-        storedresult['cal'] = result
-    else:
-        result = storedresult['cal']
-    return result[1]
+        subprocess.Popen(["/bin/sh", "-c", "/home/pvilim/.i3/getcalstatus.py > /home/pvilim/.i3/getcalstatus.out"])
+    try:
+        f = open("/home/pvilim/.i3/getcalstatus.out")
+        result = f.readline()
+        result = result.replace("\n", "")
+        return result
+    except:
+        return ""
 
 
 def get_spotify():
-    result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/getspotifystatus.py")
+    result = commands.getstatusoutput("~/.i3/getspotifystatus.py")
     return result[1]
 
 
 def get_sab(counter):
-    subprocess.Popen("timeout3 -t 5 /home/pvilim//.i3/getsabstatus.py")
-    result = commands.getstatusoutput("timeout3 -t 5 cat ~/.i3/sab.status")
+    subprocess.Popen("/home/pvilim//.i3/getsabstatus.py")
+    result = commands.getstatusoutput("cat ~/.i3/sab.status")
     return result[1]
 
 
 def get_nzbget(counter):
     if counter % 10 == 0:
-        result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/nzbgetstatus.sh")
+        result = commands.getstatusoutput("~/.i3/nzbgetstatus.sh")
         storedresult['nzbget'] = result
     else:
         result = storedresult['nzbget']
@@ -71,22 +74,25 @@ def get_nzbget(counter):
 
 def get_mail(counter):
     if counter % 60 == 0:
-        result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/mailcount.sh")
-        storedresult['mail'] = result
-    else:
-        result = storedresult['mail']
-    return result[1]
+        subprocess.Popen(["/bin/sh", "-c", "/home/pvilim/.i3/mailcount.sh > /home/pvilim/.i3/mailcount.out"])
+    try:
+        f = open("/home/pvilim/.i3/mailcount.out")
+        result = f.readline()
+        result = result.replace("\n", "")
+        return result
+    except:
+        return ""
 
 
 def get_vpn():
-    result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/vpnstatus.sh")
+    result = commands.getstatusoutput("~/.i3/vpnstatus.sh")
     return result[1]
 
 
 def get_dunst(counter):
     if counter % 2 == 0:
         result = commands.getstatusoutput(
-            "BLOCK_I3=true BLOCK_INSTANCE=NEWEST timeout3 -t 5 ~/.i3/dunst.py")
+            "BLOCK_I3=true BLOCK_INSTANCE=NEWEST ~/.i3/dunst.py")
         storedresult['dunst'] = result
     else:
         result = storedresult['dunst']
@@ -94,7 +100,7 @@ def get_dunst(counter):
 
 
 def get_speed():
-    result = commands.getstatusoutput("timeout3 -t 5 ~/.i3/speed.sh")
+    result = commands.getstatusoutput("~/.i3/speed.sh")
     return result[1]
 
 
@@ -119,7 +125,11 @@ def read_line():
 
 
 def monitor_hotplug():
-    commands.getstatusoutput("timeout3 -t 5 /home/pvilim/bin/dohotplug DP-3")
+    commands.getstatusoutput("/home/pvilim/bin/dohotplug DP-3")
+
+
+def monitor_doscreenlock():
+    commands.getstatusoutput("/home/pvilim/bin/doscreenlock")
 
 
 if __name__ == '__main__':
@@ -151,12 +161,13 @@ if __name__ == '__main__':
         j.insert(0, {'full_text': '%s' % get_mpc(), 'name': 'mpc',
                      'color': '#859900'})
         j.insert(0, {'full_text': '%s' % get_nzbget(counter), 'name': 'nzbget',
-                     'color': '#b58900'})
-        j.insert(0, {'full_text': '%s' % get_mail(counter), 'name': 'nzbget',
-                     'color': '#268bd2'})
+                     'color': '#f5871f'})
+        # j.insert(0, {'full_text': '%s' % get_mail(counter), 'name': 'nzbget',
+                     # 'color': '#268bd2'})
         j.insert(0, {'full_text': '%s' % get_dunst(counter), 'name': 'dunst',
                      'color': '#dc322f'})
         monitor_hotplug()
+        monitor_doscreenlock()
 
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
