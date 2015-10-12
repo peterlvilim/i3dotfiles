@@ -122,13 +122,6 @@ bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap-notify
 bindsym $MOD+SHIFT+s exec --no-startup-id pavucontrol
 bindsym $MOD+SHIFT+z exec ~/.i3/suspend.sh
 
-# monitors
-workspace 1 output DP-3
-workspace 2 output DP-3
-workspace 3 output DP-3
-workspace 7 output DP-2
-workspace 8 output DP-2
-workspace 9 output DP-2
 
 # menus
 bindsym $windowkey+y exec gitmenu
