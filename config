@@ -121,7 +121,7 @@ bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap-notify
 bindsym $MOD+SHIFT+s exec --no-startup-id pavucontrol
 bindsym $MOD+SHIFT+z exec ~/.i3/suspend.sh
 bindsym $MOD+SHIFT+x exec ~/.i3/lock.sh
-bindsym $MOD+SHIFT+w chromium --app=http://wunderlist.com/
+bindsym $MOD+SHIFT+w exec chromium --app=http://wunderlist.com/
 
 # monitors
 workspace 1 output DP-2
