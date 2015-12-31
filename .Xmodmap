@@ -1,8 +1,4 @@
 ! Swap alt and command
-remove Mod1 = Alt_L
-remove Mod4 = Super_L
-add Mod1 = Super_L
-add Mod4 = Alt_L
 
 ! Swap caps lock and escape
 remove Lock = Caps_Lock

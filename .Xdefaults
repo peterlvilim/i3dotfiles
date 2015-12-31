@@ -14,7 +14,7 @@ URxvt.fading:               0
 URxvt.loginShell:           true
 URxvt.saveLines:            10000
 URxvt.lineSpace:            0
-URxvt*font: xft:Inconsolata for Powerline:regular:pixelsize=18
+URxvt*font: xft:Inconsolata for Powerline:regular:pixelsize=14
 ! Fonts
 URxvt.allow_bold:           true
 

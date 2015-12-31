@@ -152,7 +152,7 @@ if __name__ == '__main__':
         j = json.loads(line)
 
         # insert information into the start of the json, but could be anywhere
-        j.insert(5, {'full_text': '%s' % " ".join(get_cal(counter).split()),
+        j.insert(4, {'full_text': '%s' % " ".join(get_cal(counter).split()),
                      'name': 'cal', 'color': '#268bd2'})
         j.insert(4, {'full_text': '%s' % " ".join(get_speed().split()),
                      'name': 'speed', 'color': '#859900'})

@@ -13,25 +13,18 @@ path="/dev/shm/measure-net-speed"
 #  find /sys/devices -name statistics
 # If you have more (or less) than two adapters, simply adjust the script here
 # and in the next block. 
-#eth0="/sys/devices/pci0000:00/0000:00:19.0/net/eth0/statistics"
-enp14s0="/sys/devices/pci0000:00/0000:00:01.1/0000:06:00.0/0000:07:03.0/0000:09:00.0/0000:0a:01.0/0000:0e:00.0/net/enp14s0/statistics"
-wlp3s0="/sys/devices/pci0000:00/0000:00:1c.2/0000:03:00.0/net/wlp3s0/statistics"
+eno1="/sys/devices/pci0000:00/0000:00:19.0/net/eno1/statistics"
 
-if [ -e "$enp14s0" ]
+if [ -e "$eno1" ]
 then
-    read enp14s0_rx < "${enp14s0}/rx_bytes"
-    read enp14s0_tx < "${enp14s0}/tx_bytes"
-fi
-if [ -e "$wlp3s0" ]
-then
-    read wlp3s0_rx < "${wlp3s0}/rx_bytes"
-    read wlp3s0_tx < "${wlp3s0}/tx_bytes"
+    read eno1_rx < "${eno1}/rx_bytes"
+    read eno1_tx < "${eno1}/tx_bytes"
 fi
 
 # get time and sum of rx/tx for combined display
 time=$(date +%s)
-rx=$(( $enp14s0_rx + $wlp3s0_rx ))
-tx=$(( $enp14s0_tx + $wlp3s0_tx ))
+rx=$(( $eno1_rx ))
+tx=$(( $eno1_tx ))
 
 # write current data if file does not exist. Do not exit, this will cause
 # problems if this file is sourced instead of executed as another process.
