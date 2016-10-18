@@ -124,8 +124,8 @@ def read_line():
         sys.exit()
 
 
-def monitor_hotplug():
-    commands.getstatusoutput("/home/pvilim/bin/dohotplug DP-3")
+def monitor_hotplug(counter):
+    commands.getstatusoutput("/home/pvilim/bin/dohotplug")
 
 
 def monitor_doscreenlock():
@@ -152,21 +152,13 @@ if __name__ == '__main__':
         j = json.loads(line)
 
         # insert information into the start of the json, but could be anywhere
-        j.insert(5, {'full_text': '%s' % " ".join(get_cal(counter).split()),
-                     'name': 'cal', 'color': '#268bd2'})
         j.insert(4, {'full_text': '%s' % " ".join(get_speed().split()),
                      'name': 'speed', 'color': '#859900'})
         j.insert(4, {'full_text': '%s' % " ".join(get_vpn().split()),
                      'name': 'speed', 'color': '#fdf6e3'})
-        j.insert(0, {'full_text': '%s' % get_mpc(), 'name': 'mpc',
-                     'color': '#859900'})
-        j.insert(0, {'full_text': '%s' % get_nzbget(counter), 'name': 'nzbget',
-                     'color': '#f5871f'})
         # j.insert(0, {'full_text': '%s' % get_mail(counter), 'name': 'nzbget',
                      # 'color': '#268bd2'})
-        j.insert(0, {'full_text': '%s' % get_dunst(counter), 'name': 'dunst',
-                     'color': '#dc322f'})
-        monitor_hotplug()
+        monitor_hotplug(counter)
         monitor_doscreenlock()
 
         # and echo back new encoded json

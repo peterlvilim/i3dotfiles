@@ -114,21 +114,25 @@ for_window [] layout tabbed
 # application launch hotkeys
 bindsym $MOD+SHIFT+g exec --no-startup-id chromium --user-data-dir=/tmp/chromedev --force-device-scale-factor=1.2
 bindsym $MOD+SHIFT+e exec --no-startup-id SWT_GTK3=0 eclipse
-bindsym $MOD+SHIFT+w exec --no-startup-id /usr/bin/chromium --show-app-list
 bindsym $MOD+SHIFT+f exec --no-startup-id firefox
 bindsym $MOD+SHIFT+p exec --no-startup-id zathura
 bindsym $MOD+SHIFT+d exec --no-startup-id qutebrowser
 bindsym $MOD+SHIFT+m exec --no-startup-id offlineimap-notify
 bindsym $MOD+SHIFT+s exec --no-startup-id pavucontrol
 bindsym $MOD+SHIFT+z exec ~/.i3/suspend.sh
+bindsym $MOD+SHIFT+x exec i3lock
+bindsym $MOD+SHIFT+w exec chromium --app=http://wunderlist.com
+bindsym $MOD+SHIFT+v exec nmcli c up delphixvpn
 
 # monitors
-workspace 1 output DP-3
+workspace 1 output DP-4
 workspace 2 output DP-3
-workspace 3 output DP-3
-workspace 7 output DP-2
-workspace 8 output DP-2
+workspace 3 output DP-2
+workspace 7 output DP-3
+workspace 8 output DP-3
 workspace 9 output DP-2
+bindsym $alt+q exec dohotplug
+bindsym $windowkey+q exec dohotplug
 
 # menus
 bindsym $windowkey+y exec gitmenu
